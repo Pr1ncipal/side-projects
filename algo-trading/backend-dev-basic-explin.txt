@@ -1,0 +1,32 @@
+Basic webpage for auto trader:
+	- Basic webpage (can be local for now)
+	- Basic SQL database script
+	- Connect webpage to SQL in local folder
+	- Webpage should have 5 inputs:
+		1 - 'How many number of stocks would you like to buy?'
+		2 - 'How much money would you like to put in?' [only accept positive values greater than 200]
+			- See if the minimum can be dynamically set. this may be a policy and can be subject to change
+					- Thinking a variable set from a super minimal SQL database table of 'factors' or 'rules'
+		
+		*Industries fall within Sectors*
+		3 - 'What sector would you like to invest in?' [string/varchar255]
+			- DROPDOWN: list of sectors sent seperate 
+		4 - 'What industry would you like to invest in?' [string/varchar255]
+			- DROPDOWN: list of industries sent seperate
+			- Only industries within the selected sector should be available choices
+			- NOTE: There should always be an option for 'Any' which will look at every stock in the sector
+
+		5- 'What is your risk profile?' [numerical. 1, 2, or 3 into SQL. use switch to assign number]
+			DROPWDOWN OPTIONS:
+				- conservative (1) | high hedging. only around 50% of money put in will go into picked stocks. rest into hedging stocks		
+				- moderate (2) | moderate hedging. include some hedge stocks in the portolio, but weight the picked stocks heavier. roughly 70-30. this should be subject to change in a database eventually (my issue to worry about)
+				- aggressive (3) | little to no hedging. 90-10 or 100-0 weight for picked stocks vs hedging. just roll with the picked stocks
+
+	SQL Entities
+	- num_of_stocks NUMERIC NOT NULL
+	- initial_investment FLOAT NOT NULL
+	- desired_sector_a VARCHAR(255) NOT NULL
+	- desired_sector_b VARCHAR(255)
+	- desired_industry_a VARCHAR(255) NOT NULL (if it is all, it should say 'All', not be blank)
+	- desired_industry_b VARCHAR(255)
+	- risk_profile NUMERIC NOT NULL (convert word input to number before enterring into SQL)
